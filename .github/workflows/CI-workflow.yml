@@ -45,12 +45,12 @@ jobs:
       - name: Push Image
         run: |
           docker tag test_${{ github.run_number }}:v1 sympatican/devsecopslab:v${{ github.run_number }}
-          docker push sympatican/<dockerrepo>:v${{ github.run_number }}
+          docker push sympatican/devsecopslab:v${{ github.run_number }}
 
       - name: Checkout the ENV Repo
         uses: actions/checkout@v3
         with:
-          repository: 'sympatican/<dockerrepo>'
+          repository: 'sympatican/devsecopslab'
           ref: 'main'
           token:  ${{ secrets.GITLEAKS}}
 
@@ -60,12 +60,12 @@ jobs:
 
       - name: Edit manifests in ENV repo
         run: |
-          yq eval -i '.spec.template.spec.containers[0].image = "sympatican/<dockerrepo>:v${{ github.run_number }}"' ./kubernetes/deployment.yaml
+          yq eval -i '.spec.template.spec.containers[0].image = "sympatican/devsecopslab:v${{ github.run_number }}"' ./kubernetes/deployment.yaml
 
       - name: Commit and Push to ENV repo
         run: |
-          git config  user.email "your email"
-          git config  user.name "${{ github.actor }}"
+          git config  user.email "eric.soulinthavong.edu@groupe-gema.com"
+          git config  user.name "Sympatican"
           git commit -a -m 'Env file is updated with the new image ${{ github.ref_name }}'
-          git push https://${{ secrets.GITLEAKS }}@github.com<dockeruser>/<dockerrepo>.git
+          git push https://${{ secrets.GITLEAKS }}@github.com sympatican/devsecopslab.git
           
