@@ -10,5 +10,6 @@ jobs:
           fetch-depth: 0
       - uses: gitleaks/gitleaks-action@v2
         env:
-          GITHUB_TOKEN: ${{ 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 }}
+          GITHUB_TOKEN: ${{ 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 }}
           GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE}} # Only required for Organizations, not personal accounts.
+
