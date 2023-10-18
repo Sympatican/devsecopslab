@@ -16,9 +16,10 @@ spec:
     spec:
       containers:
         - name: backend
-          image: <dockeruser>/<dockerrepo>:v17
+          image: sympatican/devsecopslab:v17
           resources:
             requests:
               memory: "50Mi"
             limits:
               memory: "75Mi"
+              
