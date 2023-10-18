@@ -40,6 +40,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+          token:  ${{ secrets.GITLEAKS }}
 
       - name: Push Image
         run: |
@@ -67,4 +68,4 @@ jobs:
           git config  user.name "${{ github.actor }}"
           git commit -a -m 'Env file is updated with the new image ${{ github.ref_name }}'
           git push https://${{ secrets.GITLEAKS }}@github.com<dockeruser>/<dockerrepo>.git
-          'Test'
+          
