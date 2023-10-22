@@ -49,7 +49,7 @@ jobs:
       - name: Checkout the ENV Repo
         uses: actions/checkout@v3
         with:
-          repository: 'sympatican/devsecopslabgit'
+          repository: 'sympatican/devsecopslab'
           ref: 'main'
           token:  ${{ secrets.GITLEAKS}}
 
@@ -59,7 +59,7 @@ jobs:
 
       - name: Edit manifests in ENV repo
         run: |
-          yq eval -i '.spec.template.spec.containers[0].image = "sympatican/devsecopslabgit:v${{ github.run_number }}"' ./kubernetes/deployment.yaml
+          yq eval -i '.spec.template.spec.containers[0].image = "sympatican/devsecopslab:v${{ github.run_number }}"' ./kubernetes/deployment.yaml
 
       - name: Commit and Push to ENV repo
         run: |
