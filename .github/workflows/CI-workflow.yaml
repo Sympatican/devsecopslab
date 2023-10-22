@@ -67,4 +67,3 @@ jobs:
           git config  user.name "sympatican"
           git commit -a -m 'Env file is updated with the new image ${{ github.ref_name }}'
           git push https://${{ secrets.GITLEAKS }}@github.comsympatican/devosecopslab.git
-          'test'
